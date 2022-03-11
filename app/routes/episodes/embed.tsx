@@ -1,7 +1,25 @@
-export default function TwitchEmbed(episodeId: string) {
-    const embedSrc = `https://player.twitch.tv/?collection=NTV2c7T-xxY-Wg&video=${episodeId}&parent=localhost`
-    
+import { useLoaderData } from 'remix';
+import {AdvancedVideo} from '@cloudinary/react';
+import { CloudinaryVideo } from '@cloudinary/url-gen';
+import { Actions, Qualifiers } from '@cloudinary/url-gen'
+
+export type VideoOptions = {
+    episodeId?: string;
+    publicId: string;
+    width: number;
+    height: number;
+    version: number;
+}
+
+export default function VideoEmbed(opts: VideoOptions) {
+    console.log("opts", opts)
+    const { height, width, publicId, version } = opts;
+
+    const cld = new CloudinaryVideo(publicId, {cloudName: 'breakpointt-studio-llc'})
+    const vid = cld.setVersion(version)
+
+
     return (
-        <iframe src={embedSrc} frameBorder="0" scrolling="no" height="378" width="620"></iframe>
+        <AdvancedVideo cldVid={vid} controls />
     )
 }

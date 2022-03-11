@@ -5,3 +5,28 @@
 .h2 {
     @apply text-2xl font-semibold underline mb-2;
 }
+
+/* typography */
+.main-nav {
+    @apply text-lg text-black catamaran-heavy
+}
+
+.main-nav-item {
+    @apply px-4;
+}
+
+/* base font classes */
+.catamaran-heavy {
+    font-family: catamaran,     sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+/* category card styles */
+.category-card {
+    @apply max-w-xl p-4 border-2 bg-slate-800 text-white rounded-lg m-6
+}
+
+.category-card-title {
+    @apply text-2xl font-semibold underline mb-2;
+}
